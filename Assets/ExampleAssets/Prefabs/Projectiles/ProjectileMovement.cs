@@ -16,7 +16,7 @@ public class ProjectileMovement : MonoBehaviour
     void Update()
     {
         if (speed!=0){
-            transform.position += ( transform.forward * speed * Time.deltaTime );
+            gameObject.transform.position += (gameObject.transform.right * speed * Time.deltaTime );
         }
     }
 }
