@@ -57,7 +57,10 @@
   <ItemGroup>
      <Compile Include="Assets\ExampleAssets\Prefabs\Projectiles\ProjectileMovement.cs" />
      <Compile Include="Assets\ExampleAssets\Prefabs\Projectiles\SpawnProjectile.cs" />
+     <Compile Include="Assets\Scripts\GroupOrbiter.cs" />
      <Compile Include="Assets\Scripts\KeyboardMovementScript.cs" />
+     <Compile Include="Assets\Scripts\MyCameraController.cs" />
+     <Compile Include="Assets\Scripts\OrbiterControllerScript.cs" />
      <Compile Include="Assets\Scripts\RotateToMouse.cs" />
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
      <Compile Include="Assets\Scripts\TestParticleAlignmentScript.cs" />

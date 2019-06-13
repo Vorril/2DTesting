@@ -79,30 +79,32 @@ namespace UnityTemplateProjects
         Vector3 GetInputTranslationDirection()
         {
             Vector3 direction = new Vector3();
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 direction += Vector3.forward;
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 direction += Vector3.back;
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 direction += Vector3.left;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 direction += Vector3.right;
             }
-            if (Input.GetKey(KeyCode.Q))
+            
+            if (Input.GetKey(KeyCode.Y))
             {
                 direction += Vector3.down;
             }
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.I))
             {
                 direction += Vector3.up;
             }
+
             return direction;
         }
         
@@ -131,6 +133,7 @@ namespace UnityTemplateProjects
             }
 
             // Rotation
+            /*
             if (Input.GetMouseButton(1))
             {
                 var mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * (invertY ? 1 : -1));
@@ -140,6 +143,7 @@ namespace UnityTemplateProjects
                 m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
                 m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
             }
+            */
             
             // Translation
             var translation = GetInputTranslationDirection() * Time.deltaTime;
@@ -151,16 +155,16 @@ namespace UnityTemplateProjects
             }
             
             // Modify movement by a boost factor (defined in Inspector and modified in play mode through the mouse scroll wheel)
-            boost += Input.mouseScrollDelta.y * 0.2f;
+           // boost += Input.mouseScrollDelta.y * 0.2f;
             translation *= Mathf.Pow(2.0f, boost);
 
             m_TargetCameraState.Translate(translation);
 
             // Framerate-independent interpolation
             // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time
-            var positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.deltaTime);
-            var rotationLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / rotationLerpTime) * Time.deltaTime);
-            m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, positionLerpPct, rotationLerpPct);
+           // var positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.deltaTime);
+            //var rotationLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / rotationLerpTime) * Time.deltaTime);
+            //m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, positionLerpPct, rotationLerpPct);
 
             m_InterpolatingCameraState.UpdateTransform(transform);
         }

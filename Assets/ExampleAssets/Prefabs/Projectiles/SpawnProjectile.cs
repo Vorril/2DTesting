@@ -11,6 +11,7 @@ public class SpawnProjectile : MonoBehaviour
 
     private GameObject effectToSpawn;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +33,10 @@ public class SpawnProjectile : MonoBehaviour
             vfx = Instantiate(effectToSpawn, gameObject.transform.position, Quaternion.identity);//firePoint.transform.position, Quaternion.identity);
         //}
         vfx.transform.right = rotateToMouse.getRotation();
+
+        ProjectileMovement projectile = vfx.GetComponent<ProjectileMovement>();
+        projectile.timeCreated = Time.timeSinceLevelLoad;
+
+       // Destroy(vfx, 2.0f);
     }
 }
